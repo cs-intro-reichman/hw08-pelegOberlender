@@ -76,6 +76,7 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
         for(int i = 0; i < this.size; i++) {
+            // #feedback - you should ignore lower/upper case.
             if(this.tracks[i].getTitle().equals(title)) {
                 return i;
             }
@@ -93,6 +94,7 @@ class PlayList {
         if( i < 0 || i > this.size || this.size == this.maxSize) {
            return false;
         }
+            // #feedback - note that this if is not needed. When i == this.size, it won't enter the for loop.
         else if(i == this.size) {
             this.tracks[i] = track;
             size++;
@@ -137,7 +139,9 @@ class PlayList {
      *  If the total size of both lists is too large, does nothing. */
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
+         // #feedback - you should check that both sizes are smaller than this max size only (since you insert the other list into this one).
         if((this.size + other.size) <= (this.maxSize + other.maxSize)) {
+            // #feedback - max size should not be changed.
             this.maxSize = this.maxSize + other.maxSize;
             for(int i = 0; i < other.size; i++) {
             this.add(other.tracks[i]);
