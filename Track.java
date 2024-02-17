@@ -44,6 +44,7 @@ class Track {
     private String formattedDuration(int totalSeconds) {
         int minutes = totalSeconds/60;
         int seconds = totalSeconds%60;
+        // #feedback - the check should be - seconds < 10.
         if((seconds % 10) < 10) { 
             return minutes + ":0" + seconds;
         } else { 
